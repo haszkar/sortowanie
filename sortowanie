@@ -1,0 +1,38 @@
+def bubble_sort(numbers):
+    n = len(numbers)
+    for i in range(n - 1):
+        for j in range(n - i - 1):
+            if numbers[j] > numbers[j + 1]:
+                numbers[j], numbers[j + 1] = numbers[j + 1], numbers[j]
+
+def main():
+    # Pobranie liczby elementów od użytkownika
+    try:
+        n = int(input("Podaj ilość liczb do posortowania: "))
+        if n <= 0:
+            print("Liczba elementów musi być większa od zera.")
+            return
+    except ValueError:
+        print("Podano nieprawidłową liczbę. Spróbuj ponownie.")
+        return
+
+    # Wprowadzenie liczb przez użytkownika
+    numbers = []
+    print(f"Wprowadź {n} liczb:")
+    for _ in range(n):
+        while True:
+            try:
+                number = int(input("Podaj liczbę: "))
+                numbers.append(number)
+                break  # Wyjście z pętli, jeśli liczba jest prawidłowa
+            except ValueError:
+                print("To nie jest prawidłowa liczba całkowita. Spróbuj ponownie.")
+
+    print("Sortowanie liczb...")
+    bubble_sort(numbers)
+
+    # Wyświetlenie posortowanych liczb
+    print("Posortowane liczby:", " ".join(map(str, numbers)))
+
+if __name__ == "__main__":
+    main()
